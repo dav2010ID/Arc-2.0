@@ -140,13 +140,16 @@
     overflow: hidden !important;
     backdrop-filter: blur(70px) !important;
   }
-  
-  @media (-moz-pref("arc-urlbar-animation", "stretch")) {
+
+  /*stretch animation*/
+  @media (-moz-pref("arc-urlbar-animation", 1)) {
     #urlbar[open] {
       animation: stretch 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
   }
-  @media (-moz-pref("arc-urlbar-animation", "fadeIn")) {
+
+  /*fadeIn animation*/
+  @media (-moz-pref("arc-urlbar-animation", 2)) {
     #urlbar[open] {
       animation: fadeIn 0.15s ease-in !important;
     }
@@ -178,7 +181,7 @@
 @media not (-moz-pref("arc.urlbar.background")){
   #browser:has(#urlbar[open]) .browserStack {
     scale: 1.075 !important;
-    filter: brightness(50%) blur(25px) saturate(125%) !important;
+    filter: brightness(50%) blur(30px) saturate(145%) !important;
     opacity: 1 !important;
   }
 }
@@ -191,6 +194,14 @@
     filter 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35),
     opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35),
     scale 0.25s cubic-bezier(0.175, 0.885, 0.32, 1) !important;
+}
+
+.urlbarView-row {
+  &[selected] {
+    & *, & .urlbarView-title-separator::before {
+      color: light-dark(rgba(0,0,0,1), rgba(255,255,255,1)) !important;
+    }
+  }
 }
 
 @media (-moz-pref("arcline.url.bar", 1)) {
